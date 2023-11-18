@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dbConnectionController">
+   <children>
+      <TabPane id="tabPane" fx:id="tabPane" layoutX="6.0" layoutY="4.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab fx:id="dbConnectTab" text="Database Connection">
+               <content>
+                  <GridPane hgap="10.0" vgap="10.0">
+                     <Text text="Database Connection Settings" textAlignment="CENTER" wrappingWidth="380.0" GridPane.columnSpan="2">
+                        <font>
+                           <Font name="Calibri Bold" size="23.0" />
+                        </font>
+                        <GridPane.margin>
+                           <Insets bottom="10.0" top="15.0" />
+                        </GridPane.margin></Text>
+                     <Label text="Host:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding></Label>
+                     <TextField fx:id="dbHostField" promptText="Enter Host" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Label text="Port:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                           <Insets left="10.0" />
+                        </GridPane.margin></Label>
+                     <TextField fx:id="dbPortField" promptText="Enter Port" text="5432" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Label text="Username:" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                           <Insets left="10.0" />
+                        </GridPane.margin></Label>
+                     <TextField fx:id="dbUsernameField" promptText="Enter Username" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <Label text="Password:" GridPane.rowIndex="4">
+                        <GridPane.margin>
+                           <Insets left="10.0" />
+                        </GridPane.margin>
+                     </Label>
+                     <PasswordField fx:id="dbPasswordField" promptText="Enter Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <Label text="DatabaseName:" GridPane.rowIndex="5">
+                        <GridPane.margin>
+                           <Insets left="10.0" />
+                        </GridPane.margin>
+                     </Label>
+                     <TextField fx:id="dbNameField" promptText="Enter Database name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </Tab>
+            <Tab fx:id="sshTab" text="SSH Tunneling">
+               <content>
+                  <GridPane hgap="10" vgap="10">
+                     <Text text="SSH Tunnel Settings" textAlignment="CENTER" wrappingWidth="380.0" GridPane.columnSpan="2">
+                        <font>
+                           <Font name="Calibri Bold" size="23.0" />
+                        </font>
+                        <GridPane.margin>
+                           <Insets bottom="10.0" top="15.0" />
+                        </GridPane.margin>
+                     </Text>
+                     <CheckBox fx:id="useSshCheckBox" mnemonicParsing="false" onAction="#handleUseSshCheckBox" text="Use SSH" textAlignment="CENTER" GridPane.rowIndex="1">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding>
+                     </CheckBox>
+                     <Label text="SSH Host:" GridPane.rowIndex="2">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding></Label>
+                     <TextField fx:id="sshHostField" disable="true" promptText="Enter SSH host" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Label text="SSH Port" GridPane.rowIndex="3">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding></Label>
+                     <TextField fx:id="sshPortField" disable="true" promptText="Enter SSH port" text="22" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <Label text="SSH Username" GridPane.rowIndex="4">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding></Label>
+                     <TextField fx:id="sshUsernameField" disable="true" promptText="Enter SSH username" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     <Label text="SSH Password" GridPane.rowIndex="5">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding></Label>
+                     <PasswordField fx:id="sshPasswordField" disable="true" promptText="Enter SSH password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <Button fx:id="connectButton" mnemonicParsing="false" onAction="#handleConnectButton" text="Connect" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+   </children>
+</AnchorPane>
